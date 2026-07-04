@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: bank-fraud-deployment
+
+spec:
+  replicas: 1
+
+  selector:
+    matchLabels:
+      app: bank-fraud
+
+  template:
+    metadata:
+      labels:
+        app: bank-fraud
+
+    spec:
+      containers:
+      - name: bank-fraud
+        image: bank_fraud:v1
+        imagePullPolicy: Never
+
+        command:
+          - "sleep"
+
+        args:
+          - "infinity"
